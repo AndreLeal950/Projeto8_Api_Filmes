@@ -31,11 +31,11 @@ export const login = async (req, reply) => {
     let user = await prisma.user.findUnique({ where: { email } });
 
     if (!user) {
-      return reply.status(401).send({ error: "Invalid email or password" });
+      return reply.status(401).send({ error: "Email ou senha Inválidos" });
     }
 
     if (!(await comparePassword(password, user.password))) {
-      return reply.status(401).send({ error: "Invalid email or password" });
+      return reply.status(401).send({ error: "Email ou senha Inválidos" });
     }
 
     let { password: pass, ...data } = user;

@@ -11,3 +11,4 @@ export const index = async (req, res) => {
     res.status(500).send({ error: `Cannot fetch users` });
   }
 };
+
