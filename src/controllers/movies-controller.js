@@ -19,28 +19,18 @@ export const getAllMovies = async (req, reply) => {
 export const getOneMovie = async (req, reply) => {
   try {
     const { id } = req.params;
-    console.log(id);
-    const movie = await prisma.movie.findMany({
+    const movie = await prisma.movie.findUnique({
       where: {
          id: Number(id) 
       },
-      data: {
-        title,
-        description,
-        gender: {
-          connect: { id: Number(id) }
-          
-        },
-       
-      },
-      
+           
     });   
-    console.log("Consulta realizada com SUCESSO!");
+    console.log(movie);
+    console.log("Consulta realizada com SUCESSO!");    
     reply.status(201).send(movie)
-
   } catch (error) {
     console.error("movies", error);
-    reply.status(400).send("Não foi possível consulta o filme")
+    reply.status(400).send("Não foi possível consultar o filme")
     
   }
 };
