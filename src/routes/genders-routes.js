@@ -5,7 +5,6 @@ export default {
   getAllGender: {
     method: "GET",
     url: "/genders",
-    
     handler: gendersController.getAllGender,
   },
   createGender: {
@@ -14,7 +13,7 @@ export default {
     preHandler: [validateRequest],
     handler: gendersController.createGender,
   },
-
+  
 
 
   
